@@ -29,7 +29,6 @@ public class Pessoa {
 
 	public Pessoa(UUID idPessoa, @NotBlank String nome, @NotNull LocalDate dataNascimento,
 			@NotNull Boolean aceitaTermos) {
-		this.idPessoa = UUID.randomUUID();
 		this.idPessoa = idPessoa;
 		this.nome = nome;
 		this.dataNascimento = dataNascimento;
