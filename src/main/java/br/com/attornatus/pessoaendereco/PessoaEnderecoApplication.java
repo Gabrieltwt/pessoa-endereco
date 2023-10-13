@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/")
 public class PessoaEnderecoApplication {
-
+	
 	@GetMapping
 	public String getHomeTeste() {
-		return "Pessoa Endereço - API Home";
+		return "Pessoa Endereco - API Home";
 	}
-	
+
 	public static void main(String[] args) {
 		SpringApplication.run(PessoaEnderecoApplication.class, args);
 	}
