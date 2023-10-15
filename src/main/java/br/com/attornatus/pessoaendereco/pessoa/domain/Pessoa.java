@@ -18,7 +18,7 @@ public class Pessoa {
 	@Column(columnDefinition = "uuid", name = "idPessoa", updatable = false, unique = true, nullable = false)
 	private UUID idPessoa;
 	@NotBlank
-	private String nome;
+	private String nomeCompleto;
 	@NotNull
 	private LocalDate dataNascimento;
 	@NotNull
@@ -30,7 +30,7 @@ public class Pessoa {
 	public Pessoa(UUID idPessoa, @NotBlank String nome, @NotNull LocalDate dataNascimento,
 			@NotNull Boolean aceitaTermos) {
 		this.idPessoa = idPessoa;
-		this.nome = nome;
+		this.nomeCompleto = nome;
 		this.dataNascimento = dataNascimento;
 		this.aceitaTermos = aceitaTermos;
 		this.dataHoraCadastro = LocalDateTime.now();

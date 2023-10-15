@@ -1,7 +1,7 @@
 package br.com.attornatus.pessoaendereco.pessoa.application.api;
 
 import java.util.UUID;
-
+ 
 import lombok.Value;
 
 @Value
