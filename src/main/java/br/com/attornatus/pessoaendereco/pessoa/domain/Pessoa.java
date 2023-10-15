@@ -4,10 +4,18 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-import javax.persistence.*;
-import javax.validation.constraints.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
-import lombok.*;
+import br.com.attornatus.pessoaendereco.pessoa.application.api.PessoaRequest;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @Getter
@@ -27,13 +35,12 @@ public class Pessoa {
 	private LocalDateTime dataHoraCadastro;
 	private LocalDateTime dataHoraUltimaAlteracao;
 
-	public Pessoa(UUID idPessoa, @NotBlank String nome, @NotNull LocalDate dataNascimento,
-			@NotNull Boolean aceitaTermos) {
-		this.idPessoa = idPessoa;
-		this.nomeCompleto = nome;
-		this.dataNascimento = dataNascimento;
-		this.aceitaTermos = aceitaTermos;
+	public Pessoa(PessoaRequest pessoaRequest) {
+		this.nomeCompleto = pessoaRequest.getNome();
+		this.dataNascimento = pessoaRequest.getDataNascimento();
+		this.aceitaTermos = pessoaRequest.getAceitaTermos();
 		this.dataHoraCadastro = LocalDateTime.now();
+		
 	}
 	
 	
