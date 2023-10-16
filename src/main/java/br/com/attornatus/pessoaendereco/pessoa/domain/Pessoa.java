@@ -23,7 +23,7 @@ import lombok.NoArgsConstructor;
 public class Pessoa {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(columnDefinition = "uuid", name = "idPessoa", updatable = false, unique = true, nullable = false)
+	@Column(name = "id", updatable = false, unique = true, nullable = false)
 	private UUID idPessoa;
 	@NotBlank
 	private String nomeCompleto;
@@ -36,7 +36,7 @@ public class Pessoa {
 	private LocalDateTime dataHoraUltimaAlteracao;
 
 	public Pessoa(PessoaRequest pessoaRequest) {
-		this.nomeCompleto = pessoaRequest.getNome();
+		this.nomeCompleto = pessoaRequest.getNomeCompleto();
 		this.dataNascimento = pessoaRequest.getDataNascimento();
 		this.aceitaTermos = pessoaRequest.getAceitaTermos();
 		this.dataHoraCadastro = LocalDateTime.now();
