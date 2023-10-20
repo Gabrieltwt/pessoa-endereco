@@ -23,5 +23,4 @@ public class PessoaListResponse {
 		this.idPessoa = pessoa.getIdPessoa();
 		this.nomeCompleto = pessoa.getNomeCompleto();
 	}
-	
 }
