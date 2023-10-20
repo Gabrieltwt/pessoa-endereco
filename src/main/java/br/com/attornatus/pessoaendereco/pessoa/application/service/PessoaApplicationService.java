@@ -29,9 +29,8 @@ public class PessoaApplicationService implements PessoaService {
 	@Override
 	public List<PessoaListResponse> buscaTodasPessoas() {
 		log.info("[inicia] PessoaApplicationService - buscaTodasPessoas");
-		List<PessoaListResponse> pessoas = pessoaRepository.buscaTodasPessoas();
+		List<Pessoa> pessoas = pessoaRepository.buscaTodasPessoas();
 		log.info("[finaliza] PessoaApplicationService - buscaTodasPessoas");
 		return PessoaListResponse.converte(pessoas);
 	}
-
 }
