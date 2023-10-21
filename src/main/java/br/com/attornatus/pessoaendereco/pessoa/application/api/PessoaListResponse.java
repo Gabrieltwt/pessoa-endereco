@@ -2,7 +2,6 @@ package br.com.attornatus.pessoaendereco.pessoa.application.api;
 
 import java.util.List;
 import java.util.UUID;
-//import java.util.stream.Collectors;
 import java.util.stream.Collectors;
 
 import br.com.attornatus.pessoaendereco.pessoa.domain.Pessoa;
