@@ -1,6 +1,8 @@
 package br.com.attornatus.pessoaendereco.pessoa.infra;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 //import java.util.List;
 
@@ -31,6 +33,15 @@ public class PessoaInfraRepository implements PessoaRepository {
 		List<Pessoa> todasPessoas = pessoaSpringDataJPARepository.findAll();
 		log.info("[finaliza] PessoaInfraRepository - buscaTodasPessoas");
 		return todasPessoas;
+	}
+
+	@Override
+	public Pessoa buscaPessoaAtravesId(UUID idPessoa) {
+		log.info("[inicia] PessoaInfraRepository - buscaPessoaAtravesId");
+		Pessoa pessoa = pessoaSpringDataJPARepository.findById(idPessoa)
+				.orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
+		log.info("[finaliza] PessoaInfraRepository - buscaPessoaAtravesId");
+		return pessoa;
 	}
 
 }
