@@ -39,7 +39,7 @@ public class PessoaInfraRepository implements PessoaRepository {
 	public Pessoa buscaPessoaAtravesId(UUID idPessoa) {
 		log.info("[inicia] PessoaInfraRepository - buscaPessoaAtravesId");
 		Pessoa pessoa = pessoaSpringDataJPARepository.findById(idPessoa)
-				.orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
+				.orElseThrow(() -> new RuntimeException("Pessoa não encontrada"));
 		log.info("[finaliza] PessoaInfraRepository - buscaPessoaAtravesId");
 		return pessoa;
 	}
