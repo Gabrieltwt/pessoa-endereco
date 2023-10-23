@@ -1,10 +1,7 @@
 package br.com.attornatus.pessoaendereco.pessoa.infra;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
-
-//import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
@@ -43,5 +40,4 @@ public class PessoaInfraRepository implements PessoaRepository {
 		log.info("[finaliza] PessoaInfraRepository - buscaPessoaAtravesId");
 		return pessoa;
 	}
-
 }

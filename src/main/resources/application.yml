@@ -4,12 +4,13 @@ server:
     context-path: /pessoa-endereco/api
     
 spring:
-  data:
-    mongodb:
-      authentication-database: admin
-      uri: ${MONGO_DB_URI:mongodb+srv://gabrielcunhaainfo:9XyNFdttHdz6ki9h@cluster0.c9jxrab.mongodb.net/pessoa-endereco?retryWrites=true&w=majority}
-      auto-index-creation: true      
-
-springdoc:
-  swagger-ui:
-    path: /public/swagger 
+  datasource:
+    url: jdbc:h2:mem:demodb
+    username: sa
+    password: 
+    driverClassName: org.h2.Driver
+    
+  h2:
+    console:
+      enabled: true
+      path: /h2-console

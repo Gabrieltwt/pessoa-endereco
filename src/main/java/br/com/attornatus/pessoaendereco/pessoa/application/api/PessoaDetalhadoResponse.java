@@ -4,7 +4,9 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 import br.com.attornatus.pessoaendereco.pessoa.domain.Pessoa;
+import lombok.Value;
 
+@Value
 public class PessoaDetalhadoResponse {
 	private UUID idPessoa;
 	private String nomeCompleto;
