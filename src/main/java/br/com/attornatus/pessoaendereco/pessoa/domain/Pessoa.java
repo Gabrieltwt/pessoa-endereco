@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import br.com.attornatus.pessoaendereco.pessoa.application.api.PessoaAlteracaoRequest;
 import br.com.attornatus.pessoaendereco.pessoa.application.api.PessoaRequest;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -31,17 +32,22 @@ public class Pessoa {
 	private LocalDate dataNascimento;
 	@NotNull
 	private Boolean aceitaTermos;
-	
+
 	private LocalDateTime dataHoraCadastro;
-	private LocalDateTime dataHoraUltimaAlteracao;
+	private LocalDateTime dataHoraDaUltimaAlteracao;
 
 	public Pessoa(PessoaRequest pessoaRequest) {
 		this.nomeCompleto = pessoaRequest.getNomeCompleto();
 		this.dataNascimento = pessoaRequest.getDataNascimento();
 		this.aceitaTermos = pessoaRequest.getAceitaTermos();
 		this.dataHoraCadastro = LocalDateTime.now();
-		
+
 	}
-	
-	
+
+	public void altera(PessoaAlteracaoRequest pessoaAlteracaoRequest) {
+		this.nomeCompleto = pessoaAlteracaoRequest.getNomeCompleto();
+		this.dataNascimento = pessoaAlteracaoRequest.getDataNascimento();
+		this.aceitaTermos = pessoaAlteracaoRequest.getAceitaTermos();
+		this.dataHoraDaUltimaAlteracao = LocalDateTime.now();
+	}
 }
