@@ -1,5 +1,10 @@
 package br.com.attornatus.pessoaendereco.endereco.application.api;
 
-public class EnderecoResponse {
+import java.util.UUID;
 
+import lombok.Value;
+
+@Value
+public class EnderecoResponse {
+	private UUID idEndereco;
 }
