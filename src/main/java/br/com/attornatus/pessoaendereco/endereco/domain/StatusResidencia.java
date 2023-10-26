@@ -1,4 +1,4 @@
-package br.com.attornatus.pessoaendereco.endereco;
+package br.com.attornatus.pessoaendereco.endereco.domain;
 
 public enum StatusResidencia {
 	PRINCIPAL, SECUNDARIO;
