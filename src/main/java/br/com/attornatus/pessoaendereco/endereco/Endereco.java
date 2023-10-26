@@ -10,6 +10,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
 
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -23,9 +24,13 @@ public class Endereco {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(columnDefinition = "uuid", name = "idEndereco", updatable = false, unique = true, nullable = false)
 	private UUID idEndereco;
+	@NotBlank
 	private String logradouro;
+	@NotBlank
 	private String cep;
+	@NotBlank
 	private String numero;
+	@NotBlank
 	private String cidade;
 	@Enumerated(EnumType.STRING)
 	private StatusResidencia statusResidencia;
