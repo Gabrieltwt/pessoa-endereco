@@ -15,7 +15,7 @@ import lombok.extern.log4j.Log4j2;
 @RequiredArgsConstructor
 public class EnderecoInfraRepository implements EnderecoRepository {
 	private final EnderecoSpringDataJPARepository enderecoSpringDataJPARepository;
-	
+
 	@Override
 	public Endereco salvaEndereco(Endereco endereco) {
 		log.info("[inicia] EnderecoInfraRepository - salvaEndereco");
@@ -27,8 +27,9 @@ public class EnderecoInfraRepository implements EnderecoRepository {
 	@Override
 	public List<Endereco> buscaEnderecosDaPessoaComId(UUID idPessoa) {
 		log.info("[inicia] EnderecoInfraRepository - buscaEnderecosDaPessoaComId");
+		var enderecos = enderecoSpringDataJPARepository.findByIdPessoaResidente(idPessoa);
 		log.info("[finaliza] EnderecoInfraRepository - buscaEnderecosDaPessoaComId");
-		return null;
+		return enderecos;
 	}
 
 }
