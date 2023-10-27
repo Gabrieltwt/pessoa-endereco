@@ -38,8 +38,9 @@ public class Endereco {
 	private String numero;
 	@NotBlank
 	private String cidade;
+	@NotNull
 	@Enumerated(EnumType.STRING)
-	private StatusResidencia statusResidencia;
+	private StatusResidencia statusResidencia = StatusResidencia.PRINCIPAL;
 	
 	private LocalDateTime dataHoraCadastro;
 	private LocalDateTime dataHoraDaUltimaAlteracao;
