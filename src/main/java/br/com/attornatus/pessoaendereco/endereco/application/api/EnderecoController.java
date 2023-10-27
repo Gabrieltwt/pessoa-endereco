@@ -1,5 +1,6 @@
 package br.com.attornatus.pessoaendereco.endereco.application.api;
 
+import java.util.List;
 import java.util.UUID;
 
 import javax.validation.Valid;
@@ -23,5 +24,13 @@ public class EnderecoController implements EnderecoAPI {
 		EnderecoResponse endereco = enderecoService.criaEndereco(idPessoa, enderecoRequest);
 		log.info("[finaliza] EnderecoController - postendereco");
 		return endereco;
+	}
+
+	@Override
+	public List<EnderecoPessoaListResponse> getEnderecosDaPessoa(UUID idPessoa) {
+		log.info("[inicia] EnderecoController - getEnderecosDaPessoa");
+		log.info("[idPessoa] {}", idPessoa);
+		log.info("[finaliza] EnderecoController - getEnderecosDaPessoa");
+		return null;
 	}
 }
