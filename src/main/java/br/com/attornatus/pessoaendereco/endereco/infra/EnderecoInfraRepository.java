@@ -3,10 +3,12 @@ package br.com.attornatus.pessoaendereco.endereco.infra;
 import java.util.List;
 import java.util.UUID;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 
 import br.com.attornatus.pessoaendereco.endereco.application.service.EnderecoRepository;
 import br.com.attornatus.pessoaendereco.endereco.domain.Endereco;
+import br.com.attornatus.pessoaendereco.handler.APIException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 
@@ -31,5 +33,15 @@ public class EnderecoInfraRepository implements EnderecoRepository {
 		log.info("[finaliza] EnderecoInfraRepository - buscaEnderecosDaPessoaComId");
 		return enderecos;
 	}
+	
+	@Override
+	public Endereco buscaEnderecoPeloId(UUID idEndereco) {
+		log.info("[start] EnderecoInfraRepository - buscaEnderecoPeloId");
+		var endereco = enderecoSpringDataJPARepository.findById(idEndereco)
+				.orElseThrow(() -> APIException.build(HttpStatus.NOT_FOUND, "Endereço não encontrado para o IdEndereço = " + idEndereco));
+		log.info("[finish] EnderecoInfraRepository - buscaEnderecoPeloId");
+		return endereco;
+	}
+
 
 }

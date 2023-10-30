@@ -14,6 +14,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import br.com.attornatus.pessoaendereco.endereco.application.api.EnderecoAlteracaoStatusRequest;
 import br.com.attornatus.pessoaendereco.endereco.application.api.EnderecoRequest;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -53,5 +54,10 @@ public class Endereco {
 		this.cidade = enderecoRequest.getCidade();
 		this.statusResidencia = enderecoRequest.getStatusResidencia();
 		this.dataHoraCadastro = LocalDateTime.now();
+	}
+
+	public void altera(EnderecoAlteracaoStatusRequest enderecoAlteracaoStatusRequest) {
+		this.statusResidencia = enderecoAlteracaoStatusRequest.getStatusResidencia();
+		this.dataHoraDaUltimaAlteracao = LocalDateTime.now();
 	}
 }

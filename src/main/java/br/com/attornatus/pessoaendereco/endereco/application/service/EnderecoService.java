@@ -5,6 +5,7 @@ import java.util.UUID;
 
 import javax.validation.Valid;
 
+import br.com.attornatus.pessoaendereco.endereco.application.api.EnderecoAlteracaoStatusRequest;
 import br.com.attornatus.pessoaendereco.endereco.application.api.EnderecoPessoaListResponse;
 import br.com.attornatus.pessoaendereco.endereco.application.api.EnderecoRequest;
 import br.com.attornatus.pessoaendereco.endereco.application.api.EnderecoResponse;
@@ -12,5 +13,7 @@ import br.com.attornatus.pessoaendereco.endereco.application.api.EnderecoRespons
 public interface EnderecoService {
 	EnderecoResponse criaEndereco(UUID idPessoa, @Valid EnderecoRequest enderecoRequest);
 	List<EnderecoPessoaListResponse> buscaEnderecosDaPessoaComId(UUID idPessoa);
+	void alteraEnderecoDaPessoaComId(UUID idPessoa, UUID idEndereco,
+			EnderecoAlteracaoStatusRequest enderecoAlteracaoStatusRequest);
 
 }
