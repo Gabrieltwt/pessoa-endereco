@@ -18,7 +18,7 @@ public class EnderecoController implements EnderecoAPI {
 	private final EnderecoService enderecoService;
 
 	@Override
-	public EnderecoResponse postendereco(UUID idPessoa, @Valid EnderecoRequest enderecoRequest) {
+	public EnderecoResponse postEndereco(UUID idPessoa, @Valid EnderecoRequest enderecoRequest) {
 		log.info("[inicia] EnderecoController - postendereco");
 		log.info("[idPessoa] {}", idPessoa);
 		EnderecoResponse endereco = enderecoService.criaEndereco(idPessoa, enderecoRequest);
@@ -33,5 +33,13 @@ public class EnderecoController implements EnderecoAPI {
 		List<EnderecoPessoaListResponse> enderecosDaPessoa = enderecoService.buscaEnderecosDaPessoaComId(idPessoa);
 		log.info("[finaliza] EnderecoController - getEnderecosDaPessoa");
 		return enderecosDaPessoa;
+	}
+
+	@Override
+	public void patchStatusResidencia(UUID idPessoa, UUID idEndereco,
+			@Valid EnderecoAlteracaoStatusRequest enderecoAlteracaoStatusRequest) {
+		log.info("[inicia] EnderecoController - patchStatusResidencia");
+		log.info("[idPessoa] {} - [idEndereco] {}", idPessoa, idEndereco);
+		log.info("[finaliza] EnderecoController - patchStatusResidencia");
 	}
 }
