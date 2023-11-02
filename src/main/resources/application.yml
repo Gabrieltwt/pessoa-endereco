@@ -1,7 +1,8 @@
-server:
- servlet:
-   context-path: /pessoa-endereco/api
 
+server:
+  servlet:
+    context-path: /pessoa-endereco/api
+    
 spring:
   datasource:
     url: jdbc:h2:mem:demodb
