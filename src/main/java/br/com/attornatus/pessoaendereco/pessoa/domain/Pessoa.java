@@ -14,13 +14,14 @@ import javax.validation.constraints.NotNull;
 
 import br.com.attornatus.pessoaendereco.pessoa.application.api.PessoaAlteracaoRequest;
 import br.com.attornatus.pessoaendereco.pessoa.application.api.PessoaRequest;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Getter
 @Entity
+@Builder
+@Setter
 public class Pessoa {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
