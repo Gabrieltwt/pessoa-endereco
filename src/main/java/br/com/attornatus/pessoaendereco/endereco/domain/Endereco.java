@@ -31,6 +31,8 @@ public class Endereco {
 	@NotNull
 	@Column(columnDefinition = "uuid", name = "idPessoaResidente", nullable = false)
 	private UUID idPessoaResidente;
+	@Column(columnDefinition = "uuid", name = "idPessoaBuscaEnderecoPrincipal")
+    private UUID idPessoaBuscaEnderecoPrincipal;
 	@NotBlank
 	private String logradouro;
 	@NotBlank
@@ -54,6 +56,7 @@ public class Endereco {
 		this.cidade = enderecoRequest.getCidade();
 		this.statusResidencia = enderecoRequest.getStatusResidencia();
 		this.dataHoraCadastro = LocalDateTime.now();
+		this.idPessoaBuscaEnderecoPrincipal = idPessoa;
 	}
 
 	public void altera(EnderecoAlteracaoStatusRequest enderecoAlteracaoStatusRequest) {

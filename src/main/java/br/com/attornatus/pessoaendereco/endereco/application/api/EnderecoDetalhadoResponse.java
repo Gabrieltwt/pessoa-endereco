@@ -20,4 +20,3 @@ public class EnderecoDetalhadoResponse {
     	this.statusResidencia = endereco.getStatusResidencia();
     }
 }
-

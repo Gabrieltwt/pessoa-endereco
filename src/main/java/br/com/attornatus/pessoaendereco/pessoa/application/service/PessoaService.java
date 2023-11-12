@@ -3,6 +3,7 @@ package br.com.attornatus.pessoaendereco.pessoa.application.service;
 import java.util.List;
 import java.util.UUID;
 
+import br.com.attornatus.pessoaendereco.endereco.application.api.EnderecoDetalhadoResponse;
 import br.com.attornatus.pessoaendereco.pessoa.application.api.PessoaAlteracaoRequest;
 import br.com.attornatus.pessoaendereco.pessoa.application.api.PessoaDetalhadoResponse;
 import br.com.attornatus.pessoaendereco.pessoa.application.api.PessoaListResponse;
@@ -14,4 +15,5 @@ public interface PessoaService {
 	List<PessoaListResponse> buscaTodasPessoas();
 	PessoaDetalhadoResponse buscaPessoaAtravesId(UUID idPessoa);
 	void patchAlteraPessoa(UUID idPessoa, PessoaAlteracaoRequest pessoaAlteracaoRequest);
+	EnderecoDetalhadoResponse buscaEnderecoPrincipal(UUID idPessoa);
 }
