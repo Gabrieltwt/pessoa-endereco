@@ -33,14 +33,14 @@ public class PessoaController implements PessoaAPI {
 		return pessoas;
 	}
 
-	@Override
-	public PessoaDetalhadoResponse getPessoaAtravesId(UUID idPessoa) {
-		log.info("[inicia] PessoaController - getPessoaAtravesId");
-		log.info("[idPessoa] {}", idPessoa);
-	    PessoaDetalhadoResponse pessoaDetalhado = pessoaService.buscaPessoaAtravesId(idPessoa);
-		log.info("[finaliza] PessoaController - getPessoaAtravesId");
-		return pessoaDetalhado;
-	}
+//	@Override
+//	public PessoaDetalhadoResponse getPessoaAtravesId(UUID idPessoa) {
+//		log.info("[inicia] PessoaController - getPessoaAtravesId");
+//		log.info("[idPessoa] {}", idPessoa);
+//	    PessoaDetalhadoResponse pessoaDetalhado = pessoaService.buscaPessoaAtravesId(idPessoa);
+//		log.info("[finaliza] PessoaController - getPessoaAtravesId");
+//		return pessoaDetalhado;
+//	}
 	
 	@Override
 	public void patchAlteraPessoa(UUID idPessoa, @Valid PessoaAlteracaoRequest pessoaAlteracaoRequest) {
@@ -48,6 +48,12 @@ public class PessoaController implements PessoaAPI {
 		log.info("[idPessoa] {}", idPessoa);
 		pessoaService.patchAlteraPessoa(idPessoa,pessoaAlteracaoRequest);
 		log.info("[finaliza] PessoaController - patchAlteraPessoa");
+	}
+
+	@Override
+	public PessoaDetalhadoResponse getPessoaAtravesIdPrincipal(UUID idPessoa) {
+		PessoaDetalhadoResponse pessoaDetalhado = pessoaService.buscaPessoaAtravesIdPrincipal(idPessoa);
+		return pessoaDetalhado;
 	}
 
 }

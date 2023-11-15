@@ -47,7 +47,8 @@ public class EnderecoInfraRepository implements EnderecoRepository {
 	@Override
 	public Endereco buscaEnderecoPrincipal(UUID idPessoa, StatusResidencia principal) {
 		log.info("[inicia] EnderecoInfraRepository - buscaEnderecoPrincipal");
-		var endereco = enderecoSpringDataJPARepository.findByIdPessoaBuscaEnderecoPrincipal(idPessoa);
+		Endereco endereco = enderecoSpringDataJPARepository.findByIdPessoaResidenteAndStatusResidencia(idPessoa, principal)
+		.orElseThrow(() -> APIException.build(HttpStatus.NOT_FOUND, "Endereço não encontrado para o IdEndereço = " + idPessoa));
 		log.info("[finaliza] EnderecoInfraRepository - buscaEnderecoPrincipal");
 		return endereco;
 	}

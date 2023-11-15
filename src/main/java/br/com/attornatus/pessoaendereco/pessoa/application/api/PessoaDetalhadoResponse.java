@@ -2,7 +2,7 @@ package br.com.attornatus.pessoaendereco.pessoa.application.api;
 
 import java.time.LocalDateTime;
 
-import br.com.attornatus.pessoaendereco.endereco.application.api.EnderecoDetalhadoResponse;
+import br.com.attornatus.pessoaendereco.endereco.domain.Endereco;
 import br.com.attornatus.pessoaendereco.pessoa.domain.Pessoa;
 import lombok.Getter;
 
@@ -11,9 +11,9 @@ public class PessoaDetalhadoResponse {
     private String nomeCompleto;
     private Boolean aceitaTermos;
     private LocalDateTime dataHoraCadastro;
-    private EnderecoDetalhadoResponse enderecoPrincipal;
+    private Endereco enderecoPrincipal;
 
-    public PessoaDetalhadoResponse(Pessoa pessoa, EnderecoDetalhadoResponse enderecoPrincipal) {
+    public PessoaDetalhadoResponse(Pessoa pessoa, Endereco enderecoPrincipal) {
         this.nomeCompleto = pessoa.getNomeCompleto();
         this.aceitaTermos = pessoa.getAceitaTermos();
         this.dataHoraCadastro = pessoa.getDataHoraCadastro();
