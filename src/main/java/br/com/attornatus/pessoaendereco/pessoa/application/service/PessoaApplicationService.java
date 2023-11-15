@@ -40,17 +40,9 @@ public class PessoaApplicationService implements PessoaService {
 		log.info("[finaliza] PessoaApplicationService - buscaTodasPessoas");
 		return PessoaListResponse.converte(pessoas);
 	}
-
-//	@Override
-//	public PessoaDetalhadoResponse buscaPessoaAtravesId(UUID idPessoa) {
-//	    log.info("[inicia] PessoaApplicationService - buscaPessoaAtravesId");
-//	    Pessoa pessoa = pessoaRepository.buscaPessoaAtravesId(idPessoa);
-//	    log.info("[finaliza] PessoaApplicationService - buscaPessoaAtravesId");
-//	    return new PessoaDetalhadoResponse(pessoa);
-//	}
 	
 	@Override
-	public PessoaDetalhadoResponse buscaPessoaAtravesIdPrincipal(UUID idPessoa) {
+	public PessoaDetalhadoResponse buscaPessoaAtravesId(UUID idPessoa) {
 		log.info("[inicia] PessoaApplicationService - buscaPessoaAtravesId");
 		Pessoa pessoa = pessoaRepository.buscaPessoaAtravesId(idPessoa);
 		Endereco enderecoPrincipal = enderecoRepository.buscaEnderecoPrincipal(idPessoa, StatusResidencia.PRINCIPAL);

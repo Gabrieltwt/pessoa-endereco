@@ -12,7 +12,6 @@ import br.com.attornatus.pessoaendereco.pessoa.application.api.PessoaResponse;
 public interface PessoaService {
 	PessoaResponse criaPessoa(PessoaRequest pessoaRequest);
 	List<PessoaListResponse> buscaTodasPessoas();
-//	PessoaDetalhadoResponse buscaPessoaAtravesId(UUID idPessoa);
 	void patchAlteraPessoa(UUID idPessoa, PessoaAlteracaoRequest pessoaAlteracaoRequest);
-	PessoaDetalhadoResponse buscaPessoaAtravesIdPrincipal(UUID idPessoa);
+	PessoaDetalhadoResponse buscaPessoaAtravesId(UUID idPessoa);
 }
