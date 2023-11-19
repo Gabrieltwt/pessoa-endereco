@@ -14,6 +14,8 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import br.com.attornatus.pessoaendereco.endereco.application.api.EnderecoAlteracaoStatusRequest;
 import br.com.attornatus.pessoaendereco.endereco.application.api.EnderecoRequest;
 import lombok.AccessLevel;
@@ -27,12 +29,15 @@ public class Endereco {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(columnDefinition = "uuid", name = "idEndereco", updatable = false, unique = true, nullable = false)
+	@JsonIgnore
 	private UUID idEndereco;
 	@NotNull
 	@Column(columnDefinition = "uuid", name = "idPessoaResidente", nullable = false)
+	@JsonIgnore
 	private UUID idPessoaResidente;
 	@Column(columnDefinition = "uuid", name = "idPessoaBuscaEnderecoPrincipal")
-    private UUID idPessoaBuscaEnderecoPrincipal;
+	@JsonIgnore
+	private UUID idPessoaBuscaEnderecoPrincipal;
 	@NotBlank
 	private String logradouro;
 	@NotBlank
@@ -45,7 +50,9 @@ public class Endereco {
 	@Enumerated(EnumType.STRING)
 	private StatusResidencia statusResidencia = StatusResidencia.PRINCIPAL;
 	
+	@JsonIgnore
 	private LocalDateTime dataHoraCadastro;
+	@JsonIgnore
 	private LocalDateTime dataHoraDaUltimaAlteracao;
 	
 	public Endereco(UUID idPessoa, @Valid EnderecoRequest enderecoRequest) {

@@ -19,5 +19,4 @@ public class PessoaEnderecoApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(PessoaEnderecoApplication.class, args);
 	}
-
 }
