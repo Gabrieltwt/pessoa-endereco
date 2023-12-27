@@ -14,10 +14,13 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import br.com.attornatus.pessoaendereco.endereco.application.api.EnderecoAlteracaoStatusRequest;
 import br.com.attornatus.pessoaendereco.endereco.application.api.EnderecoRequest;
+import br.com.attornatus.pessoaendereco.endereco.application.service.EnderecoRepository;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,6 +29,9 @@ import lombok.NoArgsConstructor;
 @Getter
 @Entity
 public class Endereco {
+	@Autowired
+	private EnderecoRepository enderecoRepository;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(columnDefinition = "uuid", name = "idEndereco", updatable = false, unique = true, nullable = false)
@@ -46,28 +52,44 @@ public class Endereco {
 	private String numero;
 	@NotBlank
 	private String cidade;
-	@NotNull
 	@Enumerated(EnumType.STRING)
-	private StatusResidencia statusResidencia = StatusResidencia.PRINCIPAL;
-	
+	private StatusResidencia statusResidencia;
 	@JsonIgnore
 	private LocalDateTime dataHoraCadastro;
 	@JsonIgnore
 	private LocalDateTime dataHoraDaUltimaAlteracao;
-	
+
 	public Endereco(UUID idPessoa, @Valid EnderecoRequest enderecoRequest) {
 		this.idPessoaResidente = idPessoa;
 		this.logradouro = enderecoRequest.getLogradouro();
 		this.cep = enderecoRequest.getCep();
 		this.numero = enderecoRequest.getNumero();
 		this.cidade = enderecoRequest.getCidade();
-		this.statusResidencia = enderecoRequest.getStatusResidencia();
+//		this.statusResidencia = defineStatusResidencia();
 		this.dataHoraCadastro = LocalDateTime.now();
 		this.idPessoaBuscaEnderecoPrincipal = idPessoa;
 	}
-
+	
 	public void altera(EnderecoAlteracaoStatusRequest enderecoAlteracaoStatusRequest) {
 		this.statusResidencia = enderecoAlteracaoStatusRequest.getStatusResidencia();
 		this.dataHoraDaUltimaAlteracao = LocalDateTime.now();
 	}
+	
+	public Endereco salvarEndereco(Endereco endereco) {
+        if (endereco.getStatusResidencia() == StatusResidencia.PRINCIPAL) {
+            desmarcarEnderecosPrincipais(endereco);
+        }
+        return enderecoRepository.salvaEndereco(endereco);
+    }
+	
+    private void desmarcarEnderecosPrincipais(Endereco endereco) {
+        enderecoRepository
+            .findAllByPessoaIdAndStatusResidenciaAndIdNot(
+                endereco.getIdPessoaResidente(),
+                StatusResidencia.PRINCIPAL,
+                endereco.getId()
+            )
+            .forEach(e -> e.setStatusResidencia(StatusResidencia.SECUNDARIO));
+    }
+
 }

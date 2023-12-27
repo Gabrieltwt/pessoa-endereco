@@ -22,7 +22,7 @@ import lombok.extern.log4j.Log4j2;
 public class EnderecoApplicationService implements EnderecoService {
 	private final PessoaRepository pessoaRepository;
 	private final EnderecoRepository enderecoRepository;
-
+	
 	@Override
 	public EnderecoResponse criaEndereco(UUID idPessoa, @Valid EnderecoRequest enderecoRequest) {
 		log.info("[inicia] EnderecoApplicationService - criaEndereco");

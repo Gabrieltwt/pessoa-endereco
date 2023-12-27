@@ -42,7 +42,6 @@ public class Pessoa {
 		this.dataNascimento = pessoaRequest.getDataNascimento();
 		this.aceitaTermos = pessoaRequest.getAceitaTermos();
 		this.dataHoraCadastro = LocalDateTime.now();
-
 	}
 
 	public void altera(PessoaAlteracaoRequest pessoaAlteracaoRequest) {
