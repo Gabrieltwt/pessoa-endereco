@@ -8,11 +8,11 @@ import org.springframework.stereotype.Service;
 import br.com.attornatus.pessoaendereco.endereco.application.service.EnderecoRepository;
 import br.com.attornatus.pessoaendereco.endereco.domain.Endereco;
 import br.com.attornatus.pessoaendereco.endereco.domain.StatusResidencia;
-import br.com.attornatus.pessoaendereco.pessoa.application.api.PessoaAlteracaoRequest;
-import br.com.attornatus.pessoaendereco.pessoa.application.api.PessoaDetalhadoResponse;
-import br.com.attornatus.pessoaendereco.pessoa.application.api.PessoaListResponse;
-import br.com.attornatus.pessoaendereco.pessoa.application.api.PessoaRequest;
-import br.com.attornatus.pessoaendereco.pessoa.application.api.PessoaResponse;
+import br.com.attornatus.pessoaendereco.pessoa.application.api.request.CriaPessoaRequest;
+import br.com.attornatus.pessoaendereco.pessoa.application.api.request.PessoaAlteracaoRequest;
+import br.com.attornatus.pessoaendereco.pessoa.application.api.response.PessoaDetalhadoResponse;
+import br.com.attornatus.pessoaendereco.pessoa.application.api.response.PessoaListResponse;
+import br.com.attornatus.pessoaendereco.pessoa.application.api.response.PessoaResponse;
 import br.com.attornatus.pessoaendereco.pessoa.application.repository.PessoaRepository;
 import br.com.attornatus.pessoaendereco.pessoa.domain.Pessoa;
 import lombok.RequiredArgsConstructor;
@@ -26,9 +26,11 @@ public class PessoaApplicationService implements PessoaService {
 	private final EnderecoRepository enderecoRepository;
 	
 	@Override
-	public PessoaResponse criaPessoa(PessoaRequest pessoaRequest) {
+	public PessoaResponse criaPessoa(CriaPessoaRequest pessoaRequest) {
 		log.info("[inicia] PessoaApplicationService - criaPessoa");
-		Pessoa pessoa = pessoaRepository.salva(new Pessoa(pessoaRequest));
+		//Criando uma entidade pessoa baseado nos dados do request
+		Pessoa pessoa = new Pessoa(pessoaRequest); 
+		pessoa = pessoaRepository.salva(pessoa);
 		log.info("[finaliza] PessoaApplicationService - criaPessoa");
 		return PessoaResponse.builder().idPessoa(pessoa.getIdPessoa()).build();
 	}

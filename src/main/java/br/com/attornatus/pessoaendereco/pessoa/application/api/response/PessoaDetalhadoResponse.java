@@ -1,4 +1,4 @@
-package br.com.attornatus.pessoaendereco.pessoa.application.api;
+package br.com.attornatus.pessoaendereco.pessoa.application.api.response;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
